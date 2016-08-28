@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ToolBar from './toolbar/Toolbar'
-import WebPage from './Webpage';
+import WebPage from './webpage/Webpage';
 
 class App extends Component {
   render() {
