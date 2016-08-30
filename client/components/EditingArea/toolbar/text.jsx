@@ -5,7 +5,7 @@ class Text extends Component {
     return (
       <div>
         <h3>This is a text component</h3>
-        <button onClick={this.props.handleClick}></button>
+        <button onClick={this.props.handleClick}>CLICK ME NOW!!!</button>
       </div>
     )
   }
