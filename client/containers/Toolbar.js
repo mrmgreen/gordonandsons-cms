@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { counter } from '../actions'
 import styles from './toolbar.local.css'
-import Text from '../components/EditingArea/toolbar/Text'
+import Text from '../components/EditingArea/toolbar/text/text'
+import Image from '../components/EditingArea/toolbar/image/image'
 
 class Toolbar extends Component {
 
@@ -22,6 +23,7 @@ class Toolbar extends Component {
       <div className={styles['toolbar']}>
         <h2>This is a toolbar with { increments } increments</h2>
         <Text handleClick={this.handleClick}/>
+        <Image />
       </div>
     )
   }
@@ -33,7 +35,6 @@ Toolbar.propTypes = {
 }
 
 function mapStateToProps(state) {
-  console.log('state is:', state);
   return {
     counter: state,
   }
