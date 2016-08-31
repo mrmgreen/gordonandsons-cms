@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
+import styles from '../toolbar.local.css'
 
 class Text extends Component {
   render() {
     return (
-      <div>
+      <div className={ styles['toolbarComponent'] }>
         <h3>This is a text component</h3>
         <button onClick={this.props.handleClick}>CLICK ME NOW!!!</button>
       </div>
