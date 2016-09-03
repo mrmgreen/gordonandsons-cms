@@ -5,7 +5,7 @@ class WebPage extends Component {
   render() {
     return(
       <div className={styles['webpage']}>
-        <h1>Heading 1</h1>
+        <h1>Webpage</h1>
       </div>
     )
   }

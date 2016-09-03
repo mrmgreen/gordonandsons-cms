@@ -5,7 +5,7 @@ class Text extends Component {
   render() {
     return (
       <div className={ styles['toolbarComponent'] }>
-        <h3>This is a text component</h3>
+        <h3>This is a text componentz</h3>
         <button onClick={this.props.handleClick}>CLICK ME NOW!!!</button>
       </div>
     )

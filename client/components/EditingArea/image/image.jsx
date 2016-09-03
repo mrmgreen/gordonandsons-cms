@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import styles from '../toolbar.local.css'
 
 class Image extends Component {
-  constructor(props) {
+  constsructor(props) {
     super(props);
     this.handleDrag = this.handleDrag.bind(this);
   }
@@ -13,12 +12,8 @@ class Image extends Component {
 
   render() {
     return (
-      <div
-        className={ styles['toolbarComponent'] }
-        draggable='true'
-        onDragStart={this.handleDrag}
-         >
-        <h3>This is an image componentz</h3>
+      <div draggable='true' onDragStart={()=>console.log('heeeee')}</div>>
+        <h3>This is an image components</h3>
       </div>
     )
   }
