@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import WebPage from './webpage/WebPage'
-import ToolBar from '../../containers/Toolbar'
+import WebPage from '../../containers/WebPage'
+import ToolBar from '../../containers/ToolbarContainer'
 import styles from './EditingArea.local.css'
 
 class EditingArea extends Component {

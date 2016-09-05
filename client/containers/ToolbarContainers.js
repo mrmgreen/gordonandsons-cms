@@ -5,7 +5,7 @@ import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
 import Image from '../components/EditingArea/toolbar/image/image'
 
-class Toolbar extends Component {
+class ToolbarContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +20,7 @@ class Toolbar extends Component {
   render() {
     const increments = this.props.counter;
     return (
-      <div className={styles['toolbar']}>
+      <div className={styles['toolbarContainer']}>
         <h2>This is a toolbar with { increments } increments</h2>
         <Text handleClick={this.handleClick}/>
         <Image />
@@ -29,7 +29,7 @@ class Toolbar extends Component {
   }
 }
 
-Toolbar.propTypes = {
+ToolbarContainer.propTypes = {
   counter: React.PropTypes.number,
   dispatch: React.PropTypes.func,
 }
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Toolbar);
+export default connect(mapStateToProps)(ToolbarContainer);
