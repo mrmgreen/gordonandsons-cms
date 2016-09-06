@@ -3,7 +3,7 @@ import styles from './Webpage.local.css';
 
 class WebPage extends Component {
   constructor(props) {
-
+    super(props)
   }
   render() {
     return(
