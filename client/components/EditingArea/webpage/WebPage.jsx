@@ -5,6 +5,7 @@ class WebPage extends Component {
   constructor(props) {
     super(props)
   }
+  
   render() {
     return(
       <div className={styles['webpage']} contentEditable="true"></div>
