@@ -5,16 +5,16 @@ class WebPage extends Component {
   constructor(props) {
     super(props)
   }
-  
+
   render() {
     return(
-      <div className={styles['webpage']} contentEditable="true"></div>
+      <div className={styles['webpage']} contentEditable="true" onKeyDown={this.props.onKeyDown}></div>
     )
   }
 }
 
 WebPage.propTypes = {
-  handleClick: React.PropTypes.func,
+  onKeyDown: React.PropTypes.func,
 }
 
 export default WebPage;

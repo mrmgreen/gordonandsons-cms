@@ -12,7 +12,7 @@ class Image extends Component {
 
   render() {
     return (
-      <div draggable='true' onDragStart={()=>console.log('heeeee')}</div>>
+      <div draggable='true' onDragStart={()=>console.log('heeeee')}></div>
         <h3>This is an image components</h3>
       </div>
     )

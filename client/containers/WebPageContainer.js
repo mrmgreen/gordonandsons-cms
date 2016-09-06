@@ -4,12 +4,19 @@ import styles from './WebpageContainer.local.css';
 
 class WebPageContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
+
+  onKeyDown(e) {
+    
+    console.log('key down', e)
+  }
+
   render() {
     return(
       <div className={styles['WebPageContainer']}>
-        <WebPage />
+        <WebPage onKeyDown={this.onKeyDown}/>
       </div>
     )
   }
