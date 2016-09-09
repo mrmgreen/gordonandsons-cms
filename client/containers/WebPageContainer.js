@@ -13,17 +13,17 @@ class WebPageContainer extends Component {
     console.log('key down', e.keyCode)
   }
 
+  onClick(e) {
+    console.log('clicked me');
+  }
+
   render() {
     return(
       <div className={styles['WebPageContainer']}>
-        <WebPage onKeyDown={this.onKeyDown}/>
+        <WebPage onKeyDown={this.onKeyDown} onClick={this.onClick}/>
       </div>
     )
   }
-}
-
-WebPageContainer.propTypes = {
-  handleClick: React.PropTypes.func,
 }
 
 export default WebPageContainer;

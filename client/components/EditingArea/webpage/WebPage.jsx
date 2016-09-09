@@ -8,13 +8,14 @@ class WebPage extends Component {
 
   render() {
     return(
-      <div className={styles['webpage']} contentEditable="true" onKeyDown={this.props.onKeyDown}></div>
+      <div className={styles['webpage']} contentEditable="true" onKeyDown={this.props.onKeyDown} onClick={this.props.onClick}></div>
     )
   }
 }
 
 WebPage.propTypes = {
   onKeyDown: React.PropTypes.func,
+  onClick: React.PropTypes.func,
 }
 
 export default WebPage;
