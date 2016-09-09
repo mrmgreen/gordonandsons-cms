@@ -9,8 +9,8 @@ class WebPageContainer extends Component {
   }
 
   onKeyDown(e) {
-    
-    console.log('key down', e)
+    if (e.key)
+    console.log('key down', e.keyCode)
   }
 
   render() {
