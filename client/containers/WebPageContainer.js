@@ -9,8 +9,8 @@ class WebPageContainer extends Component {
   }
 
   onKeyDown(e) {
-    if (e.key)
-    console.log('key down', e.keyCode)
+    if (e.keyCode === 13)
+      document.execCommand('formatBlock', false, 'p')
   }
 
   onClick(e) {
