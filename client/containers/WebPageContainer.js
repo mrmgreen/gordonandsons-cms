@@ -9,13 +9,9 @@ class WebPageContainer extends Component {
   }
 
   onKeyDown(e) {
-    const bKey = 66
-    console.log('clicked: ',e.which)
-    if (e.keyCode === 13) {
+    const enterKey = 13;
+    if (e.keyCode === enterKey) {
       document.execCommand('formatBlock', false, 'p')
-    } else if((e.ctrlKey || e.metaKey) && e.keyCode === bKey) {
-      console.log('ooops')
-      document.execCommand('bold', false, null);
     }
   }
 
