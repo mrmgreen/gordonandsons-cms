@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import WebPage from '../components/EditingArea/webpage/WebPage'
 import styles from './WebpageContainer.local.css';
-import { textBold } from '../actions';
+import { textBold, textItalics } from '../actions';
 
 class WebPageContainer extends Component {
   constructor(props) {
@@ -20,11 +20,10 @@ class WebPageContainer extends Component {
     document.execCommand('formatBlock', false, 'p')
     }
     if (e.metaKey && e.which === bKey) {
-      console.log('Bold me');
       this.props.dispatch(textBold());
     }
     if (e.metaKey && e.which === iKey) {
-      console.log('italics');
+      this.props.dispatch(textItalics());
     }
   }
 

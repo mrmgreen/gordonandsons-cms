@@ -5,3 +5,7 @@ export function counter() {
 export function textBold() {
   return { type: 'BOLD' }
 }
+
+export function textItalics() {
+  return { type: 'ITALICS' }
+}
