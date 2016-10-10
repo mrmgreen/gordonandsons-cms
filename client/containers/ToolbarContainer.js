@@ -36,7 +36,7 @@ ToolbarContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    counter: state,
+    counter: state.counter,
   }
 }
 

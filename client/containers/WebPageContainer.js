@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import WebPage from '../components/EditingArea/webpage/WebPage'
 import styles from './WebpageContainer.local.css';
+import { textBold } from '../actions';
 
 class WebPageContainer extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class WebPageContainer extends Component {
     }
     if (e.metaKey && e.which === bKey) {
       console.log('Bold me');
+      this.props.dispatch(textBold());
     }
     if (e.metaKey && e.which === iKey) {
       console.log('italics');
