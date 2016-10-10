@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Webpage.local.css';
+import { partialRight } from 'lodash';
 
 class WebPage extends Component {
   constructor(props) {
@@ -8,7 +9,13 @@ class WebPage extends Component {
 
   render() {
     return(
-      <div className={styles['webpage']} contentEditable="true" onKeyDown={this.props.onKeyDown} onClick={this.props.onClick}></div>
+      <div
+        ref={(c) => this.node = c}
+        className={styles['webpage']}
+        contentEditable="true"
+        onKeyDown={this.props.onKeyDown}
+        onClick={this.props.onClick}
+      ></div>
     )
   }
 }

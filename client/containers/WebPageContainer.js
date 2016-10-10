@@ -10,8 +10,8 @@ class WebPageContainer extends Component {
 
   onKeyDown(e) {
     const enterKey = 13;
-    if (e.keyCode === enterKey) {
-      document.execCommand('formatBlock', false, 'p')
+    if (e.which === enterKey) {
+    document.execCommand('formatBlock', false, 'p')
     }
   }
 
