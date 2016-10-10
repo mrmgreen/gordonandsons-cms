@@ -1,8 +1,10 @@
-export default function counter(state = 0, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    default:
-      return state
-  }
-}
+import { combineReducers } from 'redux';
+import counter from './counter';
+import text from './text';
+
+const cmsApp = combineReducers({
+  counter,
+  text
+})
+
+export default cmsApp
