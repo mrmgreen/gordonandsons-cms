@@ -22,7 +22,7 @@ class ToolbarContainer extends Component {
     return (
       <div className={styles['toolbarContainer']}>
         <h2>This is a toolbar with { increments } increments</h2>
-        <Text handleClick={this.handleClick}/>
+        <Text handleClick={this.handleClick} text={this.props.text}/>
         <Image />
       </div>
     )
@@ -32,11 +32,13 @@ class ToolbarContainer extends Component {
 ToolbarContainer.propTypes = {
   counter: React.PropTypes.number,
   dispatch: React.PropTypes.func,
+  text: React.PropTypes.object,
 }
 
 function mapStateToProps(state) {
   return {
     counter: state.counter,
+    text: state.text,
   }
 }
 
