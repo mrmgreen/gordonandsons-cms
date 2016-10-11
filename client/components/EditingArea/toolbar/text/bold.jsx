@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const BoldComponent = ({ bold }) => (
-  <p style={{
-    fontWeight: bold ? 'bold' : 'none'
-  }}>Bold
+const BoldComponent = (props) => (
+  <p className={(props.bold === true) ? 'bold' : 'none'
+  }>Bold is :  { props.bold === true ? 'true' : 'false' }
 </p>
 )
 

@@ -1,4 +1,7 @@
-export default function text(state = {}, action) {
+export default function text(state = {
+  bold: false,
+  italics: false,
+}, action) {
   switch (action.type) {
     case 'BOLD':
       return Object.assign({}, state, { bold: !state.bold })
