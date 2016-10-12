@@ -9,3 +9,10 @@ export function textBold() {
 export function textItalics() {
   return { type: 'ITALICS' }
 }
+
+export function textHighlighted(textHighlighted) {
+  return {
+    type: 'TEXTHIGHLIGHTED',
+    highlighted: textHighlighted
+  }
+}

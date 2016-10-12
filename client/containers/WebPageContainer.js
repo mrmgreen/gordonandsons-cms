@@ -10,6 +10,14 @@ class WebPageContainer extends Component {
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
+  componentDidMount() {
+    if (document.onmouseOut) {
+        if (document.getSelection()) {
+
+        }
+    };
+  }
+
   onKeyDown(e) {
     const enterKey = 13;
     const bKey = 66;
