@@ -7,10 +7,18 @@ class WebPage extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.node.addEventListener('mouseup', () => {
+      if (!(document.getSelection().toString() === '')) {
+      console.log('tostring', document.getSelection().toString());
+      }
+    });
+  }
+
   render() {
     return(
       <div
-        ref={(c) => this.node = c}
+        ref={(node) => this.node = node}
         className={styles['webpage']}
         contentEditable="true"
         onKeyDown={this.props.onKeyDown}
