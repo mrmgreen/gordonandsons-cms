@@ -15,7 +15,6 @@ class WebPageContainer extends Component {
     const enterKey = 13;
     const bKey = 66;
     const iKey = 73;
-    const shiftKey = 16;
     const arrowLeftKey = 37;
     const arrowUpKey = 38;
     const arrowRightKey = 39;
@@ -32,9 +31,7 @@ class WebPageContainer extends Component {
     if (e.metaKey && e.which === iKey) {
       this.props.dispatch(textItalics());
     }
-    if (e.which === shiftKey && e.which === arrowLeftKey) {
-      console.log('highlighting text');
-    }
+
     if (e.shiftKey && e.which === arrowLeftKey
       || e.shiftKey && e.which === arrowUpKey
       || e.shiftKey && e.which === arrowRightKey
