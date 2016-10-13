@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import WebPage from '../components/EditingArea/webpage/WebPage'
 import styles from './WebpageContainer.local.css';
-import { textBold, textItalics } from '../actions';
+import { textBold, textItalics, textHighlighted } from '../actions';
+import { debounce } from 'lodash';
 
 class WebPageContainer extends Component {
   constructor(props) {
@@ -14,6 +15,12 @@ class WebPageContainer extends Component {
     const enterKey = 13;
     const bKey = 66;
     const iKey = 73;
+    const shiftKey = 16;
+    const arrowLeftKey = 37;
+    const arrowUpKey = 38;
+    const arrowRightKey = 39;
+    const arrowDownKey = 40;
+    const bouncedgetSelectionToString = debounce(this.getSelectionToString.bind(this), 100);
 
     console.log('e.which', e.which);
     if (e.which === enterKey) {
@@ -25,6 +32,20 @@ class WebPageContainer extends Component {
     if (e.metaKey && e.which === iKey) {
       this.props.dispatch(textItalics());
     }
+    if (e.which === shiftKey && e.which === arrowLeftKey) {
+      console.log('highlighting text');
+    }
+    if (e.shiftKey && e.which === arrowLeftKey
+      || e.shiftKey && e.which === arrowUpKey
+      || e.shiftKey && e.which === arrowRightKey
+      || e.shiftKey && e.which === arrowDownKey) {
+      bouncedgetSelectionToString();
+    }
+  }
+
+  getSelectionToString() {
+    let highlightedText = document.getSelection().toString();
+    this.props.dispatch(textHighlighted(highlightedText));
   }
 
   onClick(e) {
