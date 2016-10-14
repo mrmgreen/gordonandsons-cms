@@ -17,12 +17,17 @@ class ToolbarContainer extends Component {
     this.props.dispatch(counter());
   }
 
+  handleBoldClick(e) {
+    e.preventDefault;
+    this.props.dispatch(textBold());
+  }
+
   render() {
     const increments = this.props.counter;
     return (
       <div className={styles['toolbarContainer']}>
         <h2>This is a toolbar with { increments } increments</h2>
-        <Text handleClick={this.handleClick} text={this.props.text}/>
+        <Text handleClick={this.handleClick} handleBoldClick={this.handleBoldClick} text={this.props.text}/>
         <Image />
       </div>
     )

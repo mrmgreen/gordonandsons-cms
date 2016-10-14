@@ -11,6 +11,10 @@ class WebPageContainer extends Component {
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
+  componentWillMount() {
+    this._getSelectionToString = debounce(this.getSelectionToString.bind(this), 100);
+  }
+
   onKeyDown(e) {
     const enterKey = 13;
     const bKey = 66;
@@ -19,7 +23,6 @@ class WebPageContainer extends Component {
     const arrowUpKey = 38;
     const arrowRightKey = 39;
     const arrowDownKey = 40;
-    const bouncedgetSelectionToString = debounce(this.getSelectionToString.bind(this), 100);
 
     console.log('e.which', e.which);
     if (e.which === enterKey) {
@@ -36,7 +39,7 @@ class WebPageContainer extends Component {
       || e.shiftKey && e.which === arrowUpKey
       || e.shiftKey && e.which === arrowRightKey
       || e.shiftKey && e.which === arrowDownKey) {
-      bouncedgetSelectionToString();
+        this._getSelectionToString();
     }
   }
 

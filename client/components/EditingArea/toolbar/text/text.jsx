@@ -8,7 +8,7 @@ class Text extends Component {
     return (
       <div className={ styles['toolbarComponent'] }>
         <h3>This is a text component</h3>
-        <BoldComponent bold={ this.props.text.bold }/>
+        <BoldComponent bold={ this.props.text.bold } handleBoldClick={this.props.handleBoldClick} />
         <ItalicsComponent italics={ this.props.text.italics } />
         <button onClick={ this.props.handleClick }>CLICK ME NOW!!!</button>
       </div>
@@ -19,6 +19,7 @@ class Text extends Component {
 Text.propTypes = {
   handleClick: React.PropTypes.func,
   text: React.PropTypes.object,
+  handleBoldClick: React.PropTypes.func,
 }
 
 export default Text;
