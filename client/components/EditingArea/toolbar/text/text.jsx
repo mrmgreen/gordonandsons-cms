@@ -12,14 +12,12 @@ class Text extends Component {
         <BoldComponent bold={ this.props.text.bold } handleBoldClick={this.props.handleBoldClick} />
         <ItalicsComponent italics={ this.props.text.italics } handleItalicsClick={this.props.handleItalicsClick} />
         <UnderlineComponent underline={ this.props.text.underline } handleUnderlineClick={this.props.handleUnderlineClick} />
-        <button onClick={ this.props.handleClick }>CLICK ME NOW!!!</button>
       </div>
     )
   }
 }
 
 Text.propTypes = {
-  handleClick: React.PropTypes.func,
   text: React.PropTypes.object,
   handleBoldClick: React.PropTypes.func,
   handleItalicsClick: React.PropTypes.func,
