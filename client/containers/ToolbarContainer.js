@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { counter, textBold } from '../actions'
+import { counter, textBold, textItalics } from '../actions'
 import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
 import Image from '../components/EditingArea/toolbar/image/image'
@@ -11,6 +11,7 @@ class ToolbarContainer extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleBoldClick = this.handleBoldClick.bind(this);
+    this.handleItalicsClick = this.handleItalicsClick.bind(this);
   }
 
   handleClick(e) {
@@ -23,12 +24,22 @@ class ToolbarContainer extends Component {
     document.execCommand('bold', false, null);
   }
 
+  handleItalicsClick(e) {
+    this.props.dispatch(textItalics());
+    document.execCommand('italic', false, null);
+  }
+
   render() {
     const increments = this.props.counter;
     return (
       <div className={styles['toolbarContainer']}>
         <h2>This is a toolbar with { increments } increments</h2>
-        <Text handleClick={this.handleClick} handleBoldClick={this.handleBoldClick} text={this.props.text}/>
+        <Text
+          handleClick={this.handleClick}
+          handleBoldClick={this.handleBoldClick}
+          handleItalicsClick={this.handleItalicsClick}
+          text={this.props.text}
+          />
         <Image />
       </div>
     )
