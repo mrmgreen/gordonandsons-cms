@@ -3,16 +3,11 @@ import { connect } from 'react-redux';
 import WebPage from '../components/EditingArea/webpage/WebPage'
 import styles from './WebpageContainer.local.css';
 import { textBold, textItalics, textHighlighted } from '../actions';
-import { debounce } from 'lodash';
 
 class WebPageContainer extends Component {
   constructor(props) {
     super(props);
     this.onKeyDown = this.onKeyDown.bind(this);
-  }
-
-  componentWillMount() {
-    this._getSelectionToString = debounce(this.getSelectionToString.bind(this), 100);
   }
 
   onKeyDown(e) {
@@ -34,18 +29,6 @@ class WebPageContainer extends Component {
     if (e.metaKey && e.which === iKey) {
       this.props.dispatch(textItalics());
     }
-
-    if (e.shiftKey && e.which === arrowLeftKey
-      || e.shiftKey && e.which === arrowUpKey
-      || e.shiftKey && e.which === arrowRightKey
-      || e.shiftKey && e.which === arrowDownKey) {
-        this._getSelectionToString();
-    }
-  }
-
-  getSelectionToString() {
-    let highlightedText = document.getSelection().toString();
-    this.props.dispatch(textHighlighted(highlightedText));
   }
 
   onClick(e) {

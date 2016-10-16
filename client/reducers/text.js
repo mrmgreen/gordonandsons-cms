@@ -9,7 +9,7 @@ export default function text(state = {
     case 'ITALICS':
       return Object.assign({}, state, { italics: !state.italics })
     case 'HIGHLIGHTED':
-      return Object.assign({}, state, { textHighlighted: action.highlighted})
+      return Object.assign({}, state, { textHighlighted: action.textHighlighted})
     default:
       return state
   }

@@ -3,7 +3,9 @@ export function counter() {
 }
 
 export function textBold() {
-  return { type: 'BOLD' }
+  return {
+    type: 'BOLD',
+   }
 }
 
 export function textItalics() {
@@ -13,6 +15,6 @@ export function textItalics() {
 export function textHighlighted(textHighlighted) {
   return {
     type: 'TEXTHIGHLIGHTED',
-    highlighted: textHighlighted
+    textHighlighted
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../toolbar.local.css';
-import BoldComponent from './bold';
+import BoldComponent from './boldComponent';
 import ItalicsComponent from './italics';
 
 class Text extends Component {

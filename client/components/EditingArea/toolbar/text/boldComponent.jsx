@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 
 const BoldComponent = (props) => (
-  <button className={(props.bold === true) ? 'bold' : 'none'
-  } onClick={props.handleBoldClick} >Bold is :  { props.bold === true ? 'true' : 'false' }
-</button>
+  <button
+    className={ (props.bold === true) ? 'bold' : 'none'}
+    onClick={props.handleBoldClick}
+     > Bold is :  { props.bold === true ? 'true' : 'false' }
+  </button>
 )
 
 BoldComponent.propTypes = {
