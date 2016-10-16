@@ -12,6 +12,10 @@ export function textItalics() {
   return { type: 'ITALICS' }
 }
 
+export function textUnderline() {
+  return { type: 'UNDERLINE' }
+}
+
 export function textHighlighted(textHighlighted) {
   return {
     type: 'TEXTHIGHLIGHTED',
