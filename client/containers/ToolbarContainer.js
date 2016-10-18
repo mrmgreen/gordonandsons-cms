@@ -12,6 +12,11 @@ class ToolbarContainer extends Component {
     this.handleBoldClick = this.handleBoldClick.bind(this);
     this.handleItalicsClick = this.handleItalicsClick.bind(this);
     this.handleUnderlineClick = this.handleUnderlineClick.bind(this);
+    this.handleBackgroundColorClick = this.handleBackgroundColorClick.bind(this);
+  }
+
+  handleBackgroundColorClick(e) {
+    document.execCommand('BackColor', false, '#D4FF00');
   }
 
   handleBoldClick(e) {
@@ -38,6 +43,7 @@ class ToolbarContainer extends Component {
           handleBoldClick={this.handleBoldClick}
           handleItalicsClick={this.handleItalicsClick}
           handleUnderlineClick={this.handleUnderlineClick}
+          handleBackgroundColorClick={this.handleBackgroundColorClick}
           text={this.props.text}
           />
         <Image />
