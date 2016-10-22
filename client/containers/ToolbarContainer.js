@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { textBold, textItalics, textUnderline } from '../actions'
+import { textBold, textItalics, textUnderline, imageUpload } from '../actions'
 import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
-import Image from '../components/EditingArea/toolbar/image/image'
+import ImageUpload from '../components/EditingArea/toolbar/image/upload'
 
 class ToolbarContainer extends Component {
 
@@ -13,6 +13,7 @@ class ToolbarContainer extends Component {
     this.handleItalicsClick = this.handleItalicsClick.bind(this);
     this.handleUnderlineClick = this.handleUnderlineClick.bind(this);
     this.handleBackgroundColorClick = this.handleBackgroundColorClick.bind(this);
+    this._handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   handleBackgroundColorClick(e) {
@@ -34,11 +35,16 @@ class ToolbarContainer extends Component {
     document.execCommand('underline', false, null);
   }
 
+  handleOnSubmit(e) {
+    e.preventDefault();
+    // this.props.dispatch(imageUpload());
+  }
+
   render() {
     const increments = this.props.counter;
     return (
       <div className={styles['toolbarContainer']}>
-        <h2>This is a toolbar with { increments } increments</h2>
+        <h2>This is a toolbar</h2>
         <Text
           handleBoldClick={this.handleBoldClick}
           handleItalicsClick={this.handleItalicsClick}
@@ -46,7 +52,7 @@ class ToolbarContainer extends Component {
           handleBackgroundColorClick={this.handleBackgroundColorClick}
           text={this.props.text}
           />
-        <Image />
+        <ImageUpload handleOnSubmit={this._handleOnSubmit}/>
       </div>
     )
   }
