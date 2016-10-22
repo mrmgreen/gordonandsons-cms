@@ -13,7 +13,6 @@ class ToolbarContainer extends Component {
     this.handleItalicsClick = this.handleItalicsClick.bind(this);
     this.handleUnderlineClick = this.handleUnderlineClick.bind(this);
     this.handleBackgroundColorClick = this.handleBackgroundColorClick.bind(this);
-    this._handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   handleBackgroundColorClick(e) {
@@ -35,11 +34,6 @@ class ToolbarContainer extends Component {
     document.execCommand('underline', false, null);
   }
 
-  handleOnSubmit(e) {
-    e.preventDefault();
-    // this.props.dispatch(imageUpload());
-  }
-
   render() {
     const increments = this.props.counter;
     return (
@@ -52,7 +46,7 @@ class ToolbarContainer extends Component {
           handleBackgroundColorClick={this.handleBackgroundColorClick}
           text={this.props.text}
           />
-        <ImageUpload handleOnSubmit={this._handleOnSubmit}/>
+        <ImageUpload />
       </div>
     )
   }
