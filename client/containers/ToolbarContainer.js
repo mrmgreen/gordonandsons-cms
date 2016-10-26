@@ -4,6 +4,7 @@ import { textBold, textItalics, textUnderline, imageUpload } from '../actions'
 import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
 import ImageUpload from '../components/EditingArea/toolbar/image/upload'
+import { round } from 'lodash'
 
 class ToolbarContainer extends Component {
 
@@ -13,6 +14,40 @@ class ToolbarContainer extends Component {
     this.handleItalicsClick = this.handleItalicsClick.bind(this);
     this.handleUnderlineClick = this.handleUnderlineClick.bind(this);
     this.handleBackgroundColorClick = this.handleBackgroundColorClick.bind(this);
+    this._handleImageUploadChange = this.handleImageUploadChange.bind(this);
+  }
+
+  handleImageUploadChange(e) {
+    console.log('e.target.files || e.target.value ===', e.target.files || e.target.value);
+    const fileList = e.target.files || e.target.value;
+    this.printFileSize(fileList);
+    this.fileUpload(fileList);
+  }
+
+  fileUpload(fileList) {
+    console.log('fileUpload');
+    const file = fileList[0];
+    const reader = new FileReader();
+    reader.onload = ((e) => {
+      this.props.dispatch(imageUpload({
+        src: reader.result,
+      }))
+    });
+    reader.readAsDataURL(file)
+  }
+
+  printFileSize(fileList) {
+    for (let i = 0; i < fileList.length; i++) {
+      console.log('fileList item ===', fileList[i]);
+      const bytes = fileList[i].size;
+      const KB = round(bytes / 1024, 2);
+      const MB = round(KB / 1024, 2);
+      if (MB > 2.3) {
+        console.log('The image is too big, please try reducing its size');
+      } else {
+        console.log('uploading');
+      }
+    }
   }
 
   handleBackgroundColorClick(e) {
@@ -46,7 +81,7 @@ class ToolbarContainer extends Component {
           handleBackgroundColorClick={this.handleBackgroundColorClick}
           text={this.props.text}
           />
-        <ImageUpload />
+        <ImageUpload handleImageUploadChange={this._handleImageUploadChange} image={this.props.image} />
       </div>
     )
   }
@@ -55,11 +90,13 @@ class ToolbarContainer extends Component {
 ToolbarContainer.propTypes = {
   dispatch: React.PropTypes.func,
   text: React.PropTypes.object,
+  image: React.PropTypes.object,
 }
 
 function mapStateToProps(state) {
   return {
     text: state.text,
+    image: state.image,
   }
 }
 
