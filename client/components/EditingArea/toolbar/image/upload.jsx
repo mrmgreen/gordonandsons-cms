@@ -21,16 +21,13 @@ class Image extends Component {
   }
 
   render() {
-    let img = this.props.image.src ? <img src={this.props.image.src}></img> : null;
+    let img = this.props.image.src ? <img src={this.props.image.src} className={ styles.img }></img> : null;
     let className = cx(
       this.state.active ? [styles.imagepreviewActive] : [styles.imagepreview],
     );
     return (
       <div className={ styles['toolbarComponent'] }>
         <h3>Upload image</h3>
-        <div className={ className }>
-          {img}
-        </div>
         <input
           multiple
           type="file"
@@ -38,6 +35,11 @@ class Image extends Component {
           id="file"
           onChange={this.props.handleImageUploadChange}
          />
+         <div className={ className }>
+           <div className={ styles.imageContainer }>
+             {img}
+           </div>
+         </div>
       </div>
     )
   }
