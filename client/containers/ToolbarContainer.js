@@ -20,17 +20,19 @@ class ToolbarContainer extends Component {
   handleImageUploadChange(e) {
     console.log('e.target.files || e.target.value ===', e.target.files || e.target.value);
     const fileList = e.target.files || e.target.value;
-    this.printFileSize(fileList);
     this.fileUpload(fileList);
   }
 
   fileUpload(fileList) {
     console.log('fileUpload');
+    const size = this.printFileSize(fileList);
+    console.log('size of file ===', size);
     const file = fileList[0];
     const reader = new FileReader();
     reader.onload = ((e) => {
       this.props.dispatch(imageUpload({
         src: reader.result,
+        size: size,
       }))
     });
     reader.readAsDataURL(file)
@@ -38,15 +40,10 @@ class ToolbarContainer extends Component {
 
   printFileSize(fileList) {
     for (let i = 0; i < fileList.length; i++) {
-      console.log('fileList item ===', fileList[i]);
       const bytes = fileList[i].size;
       const KB = round(bytes / 1024, 2);
       const MB = round(KB / 1024, 2);
-      if (MB > 2.3) {
-        console.log('The image is too big, please try reducing its size');
-      } else {
-        console.log('uploading');
-      }
+      return MB >= 1 ? `${MB} MB` : `${KB} KB`;
     }
   }
 

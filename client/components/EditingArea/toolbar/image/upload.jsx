@@ -38,6 +38,8 @@ class Image extends Component {
          <div className={ className }>
            <div className={ styles.imageContainer }>
              {img}
+             Image size:
+             {this.props.image.size}
            </div>
          </div>
       </div>

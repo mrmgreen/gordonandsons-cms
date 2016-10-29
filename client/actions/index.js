@@ -19,30 +19,10 @@ export function textHighlighted(textHighlighted) {
   }
 }
 
-// export function imageUpload() {
-//   return (dispatch) => {
-//     let result;
-//     const url = '/image/create';
-//     const options = {
-//       method: 'POST',
-//     }
-//     fetch(url, options).then((response) => {
-//       console.log('post succesful');
-//       return result = response.json();
-//     }).catch((error) => {
-//       console.log('error when uploading image', error);
-//       return result = 'noooo';
-//     })
-//     return {
-//       type: 'IMAGEUPLOAD',
-//       result,
-//      }
-//    }
-// }
-
 export function imageUpload(image) {
   return {
     type: 'IMAGEUPLOAD',
     src: image.src,
+    size: image.size,
    }
 }
