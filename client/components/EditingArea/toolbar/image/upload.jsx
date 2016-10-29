@@ -29,7 +29,6 @@ class Image extends Component {
       <div className={ styles['toolbarComponent'] }>
         <h3>Upload image</h3>
         <input
-          multiple
           type="file"
           name="file"
           id="file"
