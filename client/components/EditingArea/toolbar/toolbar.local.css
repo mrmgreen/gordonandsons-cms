@@ -5,22 +5,19 @@
 
 .imagepreview {
   display: none;
-  width: 60%;
-  height: 800px;
-  top: 20%;
-  left: 20%;
-  background: white;
-  position: fixed;
 }
 
 .imagepreviewActive {
   display: block;
   width: 60%;
-  height: 800px;
-  top: 20%;
+  height: 500px;
+  top: 10%;
   left: 20%;
-  background: white;
   position: fixed;
+  background: #000;
+  color: #fff;
+  border: 5px solid #ccc;
+  border-radius: 5px;
 }
 
 .imageContainer {
@@ -33,4 +30,6 @@
 
 .img {
     width: 100%;
+    border: 3px solid #fff;
+    border-radius: 2px;
 }
