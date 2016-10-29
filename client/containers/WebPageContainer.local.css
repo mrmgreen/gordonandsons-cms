@@ -3,6 +3,8 @@
   font-size: 20px;
   line-height: 20px;
   margin-bottom: 20px;
-  color: blue;
-  background-color: pink;
+  color: black;
+  background-color: #fff;
+  border: 6px solid #ccc;
+  border-radius: 5px;
 }

@@ -1,5 +1,6 @@
 .toolbarComponent {
-  border: 1px solid yellow;
+  border: 1px solid #ccc;
+  padding: 5px;
 }
 
 .imagepreview {

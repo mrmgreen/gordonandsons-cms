@@ -1,5 +1,8 @@
 .toolbarContainer {
   width: 200px;
   height: 500px;
-  background-color: green;
+  background-color: #507fa9;
+  border: 5px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
 }

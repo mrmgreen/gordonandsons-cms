@@ -16,7 +16,7 @@ let store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App value="hello" />
+    <App />
   </Provider>,
   document.getElementById('root')
 )
