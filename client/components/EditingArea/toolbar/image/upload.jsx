@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import styles from '../toolbar.local.css'
+import ImgPreviewHeader from './ImgPreviewHeader'
 import cx from "classnames";
 
 class Image extends Component {
@@ -35,6 +36,7 @@ class Image extends Component {
           onChange={this.props.handleImageUploadChange}
          />
          <div className={ className }>
+           <ImgPreviewHeader />
            <div className={ styles.imageContainer }>
              {img}
              Image size:
