@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import styles from '../toolbar.local.css'
+import styles from '../toolbar.local.scss'
 import ImgPreviewHeader from './ImgPreviewHeader'
 import cx from "classnames";
 

@@ -1,7 +1,9 @@
+@import 'client/styles/colours';
+
 .toolbarContainer {
   width: 200px;
   height: 500px;
-  background-color: #507fa9;
+  background-color: $dark-blue;
   border: 5px solid #ccc;
   border-radius: 5px;
   color: #fff;
