@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { textBold, textItalics, textUnderline, imageUpload } from '../actions'
+import { textBold, textItalics, textUnderline, imageUpload, imageCancel } from '../actions'
 import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
 import ImageUpload from '../components/EditingArea/toolbar/image/upload'
@@ -14,7 +14,8 @@ class ToolbarContainer extends Component {
     this.handleItalicsClick = this.handleItalicsClick.bind(this);
     this.handleUnderlineClick = this.handleUnderlineClick.bind(this);
     this.handleBackgroundColorClick = this.handleBackgroundColorClick.bind(this);
-    this._handleImageUploadChange = this.handleImageUploadChange.bind(this);
+    this.handleImageUploadChange = this.handleImageUploadChange.bind(this);
+    this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
   handleImageUploadChange(e) {
@@ -67,7 +68,7 @@ class ToolbarContainer extends Component {
   }
 
   handleCancelClick(e) {
-    console.log('cancel clicked');
+    this.props.dispatch(imageCancel());
   }
 
   render() {
@@ -83,7 +84,7 @@ class ToolbarContainer extends Component {
           text={this.props.text}
           />
         <ImageUpload
-          handleImageUploadChange={this._handleImageUploadChange}
+          handleImageUploadChange={this.handleImageUploadChange}
           image={this.props.image}
           handleCancelClick={this.handleCancelClick} />
       </div>

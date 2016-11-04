@@ -26,3 +26,9 @@ export function imageUpload(image) {
     size: image.size,
    }
 }
+
+export function imageCancel() {
+  return {
+    type: 'IMAGECANCEL',
+   }
+}
