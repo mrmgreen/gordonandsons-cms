@@ -66,6 +66,10 @@ class ToolbarContainer extends Component {
     document.execCommand('underline', false, null);
   }
 
+  handleCancelClick(e) {
+    console.log('cancel clicked');
+  }
+
   render() {
     const increments = this.props.counter;
     return (
@@ -78,7 +82,10 @@ class ToolbarContainer extends Component {
           handleBackgroundColorClick={this.handleBackgroundColorClick}
           text={this.props.text}
           />
-        <ImageUpload handleImageUploadChange={this._handleImageUploadChange} image={this.props.image} />
+        <ImageUpload
+          handleImageUploadChange={this._handleImageUploadChange}
+          image={this.props.image}
+          handleCancelClick={this.handleCancelClick} />
       </div>
     )
   }

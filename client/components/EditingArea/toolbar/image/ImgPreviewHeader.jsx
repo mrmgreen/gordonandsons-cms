@@ -6,9 +6,13 @@ function ImgPreviewHeader(props) {
   return (
     <div className={styles.imgPreviewHeader}>
       ImgPreviewHeader
-      <Cancel />
+      <Cancel handleCancelClick={props.handleCancelClick} />
     </div>
   )
+}
+
+ImgPreviewHeader.propTypes = {
+  handleCancelClick: React.PropTypes.func,
 }
 
 export default ImgPreviewHeader;

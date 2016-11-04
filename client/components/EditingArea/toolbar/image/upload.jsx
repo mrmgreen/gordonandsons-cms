@@ -36,7 +36,7 @@ class Image extends Component {
           onChange={this.props.handleImageUploadChange}
          />
          <div className={ className }>
-           <ImgPreviewHeader />
+           <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
            <div className={ styles.imageContainer }>
              {img}
              Image size:
@@ -51,6 +51,7 @@ class Image extends Component {
 Image.propTypes = {
   handleImageUploadChange: PropTypes.func,
   image: PropTypes.object,
+  handleCancelClick: PropTypes.func,
 }
 
 export default Image;
