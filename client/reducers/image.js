@@ -6,7 +6,7 @@ export default function image(state = {
     case 'IMAGEUPLOAD':
       return Object.assign({}, state, { src: action.src, size: action.size });
     case 'IMAGECANCEL':
-      return Object.assign({}, state, { src: false, size: null });
+      return Object.assign({}, state, { src: '', size: null });
     default:
       return state
   }

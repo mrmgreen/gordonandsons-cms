@@ -68,6 +68,7 @@ class ToolbarContainer extends Component {
   }
 
   handleCancelClick(e) {
+    console.log('toolbarContainer ===', this);
     this.props.dispatch(imageCancel());
   }
 

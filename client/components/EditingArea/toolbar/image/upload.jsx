@@ -6,27 +6,19 @@ import cx from "classnames";
 class Image extends Component {
   constructor(props) {
     super(props);
-    this.handleCancelClick = this.handleCancelClick.bind(this);
     this.state = {
       active: false
     }
   }
 
   componentWillReceiveProps(newProps) {
-    !(newProps.image.src === this.props.image.src) && !(newProps.image.src === '') ?
+    newProps.image.src !== this.props.image.src && newProps.image.src !== '' ?
     this.setState({
       active: true,
     })
     : this.setState({
       active: false,
     })
-  }
-
-  handleCancelClick(e) {
-    this.props.handleCancelClick(e);
-    this.setState({
-      active: false,
-    });
   }
 
   render() {
@@ -44,7 +36,7 @@ class Image extends Component {
           onChange={this.props.handleImageUploadChange}
          />
          <div className={ className }>
-           <ImgPreviewHeader handleCancelClick={ this.handleCancelClick } />
+           <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
            <div className={ styles.imageContainer }>
              {img}
              Image size:
