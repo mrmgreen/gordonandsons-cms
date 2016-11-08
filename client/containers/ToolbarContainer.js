@@ -30,10 +30,11 @@ class ToolbarContainer extends Component {
     console.log('size of file ===', size);
     const file = fileList[0];
     const reader = new FileReader();
+    console.log('reader ===', reader);
     reader.onload = ((e) => {
       this.props.dispatch(imageUpload({
         src: reader.result,
-        size: size,
+        size,
       }))
     });
     reader.readAsDataURL(file)
