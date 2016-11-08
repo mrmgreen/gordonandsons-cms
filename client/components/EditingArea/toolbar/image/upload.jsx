@@ -7,7 +7,8 @@ class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: false,
+      imageKey: 1,
     }
   }
 
@@ -21,7 +22,7 @@ class Image extends Component {
     })
     if (newProps.image.value !== this.props.image.value) {
       this.setState({
-        value: newProps.image.value,
+        imageKey: this.state.imageKey +=1,
       });
     }
   }
@@ -31,17 +32,15 @@ class Image extends Component {
     let className = cx(
       this.state.active ? [styles.imagepreviewActive] : [styles.imagepreview],
     );
-    let imageProps = {};
-    this.state.value === "" ? imageProps.value="" : null;
     return (
       <div className={ styles['toolbarComponent'] }>
         <h3>Upload image</h3>
         <input
+          key={this.state.imageKey}
           type="file"
           name="file"
           id="file"
           onChange={this.props.handleImageUploadChange}
-          {...imageProps}
          />
          <div className={ className }>
            <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
