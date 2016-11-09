@@ -34,6 +34,19 @@ class Image extends Component {
     let className = cx(
       this.state.active ? [styles.imagepreviewActive] : [styles.imagepreview],
     );
+    let imageUploadComp;
+    if (this.state.active) {
+      imageUploadComp = <div className={ className } key="upload">
+          <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
+          <div className={ styles.imageContainer }>
+            {img}
+            Image size:
+            {this.props.image.size}
+          </div>
+          <ImagePreviewFooter handleSubmitClick={ this.props.handleSubmitClick } />
+        </div>
+    } else { imageUploadComp = null }
+
     return (
       <div className={ styles['toolbarComponent'] }>
         <h3>Upload image</h3>
@@ -44,15 +57,13 @@ class Image extends Component {
           id="file"
           onChange={this.props.handleImageUploadChange}
          />
-         <div className={ className } key="upload">
-           <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
-           <div className={ styles.imageContainer }>
-             {img}
-             Image size:
-             {this.props.image.size}
-           </div>
-           <ImagePreviewFooter handleSubmitClick={ this.props.handleSubmitClick } />
-         </div>
+         <ReactCSSTransitionGroup
+           transitionName = "imagepreview"
+           transitionEnterTimeout={500} transitionLeaveTimeout={300}
+           transitionEnter = {true} transitionLeave = {true}
+          >
+          { imageUploadComp }
+         </ReactCSSTransitionGroup>
       </div>
     )
   }
