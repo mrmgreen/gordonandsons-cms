@@ -16,6 +16,7 @@ class ToolbarContainer extends Component {
     this.handleBackgroundColorClick = this.handleBackgroundColorClick.bind(this);
     this.handleImageUploadChange = this.handleImageUploadChange.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
   }
 
   handleImageUploadChange(e) {
@@ -69,9 +70,13 @@ class ToolbarContainer extends Component {
   }
 
   handleCancelClick(e) {
-    console.log('toolbarContainer ===', this);
     this.props.dispatch(imageCancel());
   }
+
+  handleSubmitClick(e) {
+    console.log('handleSubmitClick');
+  }
+
 
   render() {
     const increments = this.props.counter;
@@ -88,7 +93,9 @@ class ToolbarContainer extends Component {
         <ImageUpload
           handleImageUploadChange={this.handleImageUploadChange}
           image={this.props.image}
-          handleCancelClick={this.handleCancelClick} />
+          handleCancelClick={this.handleCancelClick}
+          handleSubmitClick={this.handleSubmitClick}
+          />
       </div>
     )
   }

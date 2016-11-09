@@ -1,7 +1,9 @@
-import React, { Component, PropTypes } from 'react'
-import styles from '../toolbar.local.scss'
-import ImgPreviewHeader from './ImgPreviewHeader'
+import React, { Component, PropTypes } from 'react';
+import styles from '../toolbar.local.scss';
+import ImgPreviewHeader from './ImgPreviewHeader';
+import ImagePreviewFooter from './ImagePreviewFooter';
 import cx from "classnames";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Image extends Component {
   constructor(props) {
@@ -42,13 +44,14 @@ class Image extends Component {
           id="file"
           onChange={this.props.handleImageUploadChange}
          />
-         <div className={ className }>
+         <div className={ className } key="upload">
            <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
            <div className={ styles.imageContainer }>
              {img}
              Image size:
              {this.props.image.size}
            </div>
+           <ImagePreviewFooter handleSubmitClick={ this.props.handleSubmitClick } />
          </div>
       </div>
     )
@@ -59,6 +62,7 @@ Image.propTypes = {
   handleImageUploadChange: PropTypes.func,
   image: PropTypes.object,
   handleCancelClick: PropTypes.func,
+  handleSubmitClick: PropTypes.func,
 }
 
 export default Image;

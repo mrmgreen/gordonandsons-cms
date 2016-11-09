@@ -14,6 +14,8 @@ let store = createStore(
   applyMiddleware(thunkMiddleware, logger)
 );
 
+require('./styles/app.scss');
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
