@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -20,23 +21,27 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /(node_modules\/react-epg-component)/,
-        loader: 'babel',
-      },
-      {
         test: /\.(js|jsx)$/,
         loader: 'babel',
         exclude: /(node_modules)/,
       },
       {
-        test: /\.css$/,
-        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        test: /^((?!\.local).)*\.s?css$/,
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass?sourceMap'),
+      },
+      {
+        test: /\.local.s?css$/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap' /* eslint max-len: ["error", 800000, 4] */
+        ),
       },
     ],
   },
+  postcss: [autoprefixer],
   plugins: [
+    new ExtractTextPlugin('style.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
 };

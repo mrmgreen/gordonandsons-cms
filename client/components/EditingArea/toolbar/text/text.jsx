@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import styles from '../toolbar.local.css';
+import styles from '../toolbar.local.scss';
 import BoldComponent from './boldComponent';
 import ItalicsComponent from './italicsComponent';
 import UnderlineComponent from './underlineComponent';

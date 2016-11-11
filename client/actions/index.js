@@ -18,3 +18,36 @@ export function textHighlighted(textHighlighted) {
     textHighlighted
   }
 }
+
+export function imageUpload(image) {
+  return {
+    type: 'IMAGEUPLOAD',
+    src: image.src,
+    size: image.size,
+    file: image.file,
+   }
+}
+
+export function imageCancel() {
+  return {
+    type: 'IMAGECANCEL',
+   }
+}
+
+export function startImageUpload(imageFile) {
+  return (dispatch, getState) => {
+    const formData = new FormData();
+    formData.append('file', imageFile, imageFile.name);
+
+    const options = {
+      body: formData,
+      method: 'POST',
+    };
+
+    const request = new Request('/image/create', options);
+
+    return fetch(request).then((response) => {
+      console.log('helloooooo request is good', response);
+    });
+  }
+}
