@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { textBold, textItalics, textUnderline, imageUpload, imageCancel } from '../actions'
+import { textBold, textItalics, textUnderline, imageUpload, imageCancel, startImageUpload } from '../actions'
 import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
 import ImageUpload from '../components/EditingArea/toolbar/image/upload'
@@ -36,9 +36,11 @@ class ToolbarContainer extends Component {
       this.props.dispatch(imageUpload({
         src: reader.result,
         size,
+        file,
       }))
     });
     reader.readAsDataURL(file)
+
   }
 
   printFileSize(fileList) {
@@ -75,6 +77,7 @@ class ToolbarContainer extends Component {
 
   handleSubmitClick(e) {
     console.log('handleSubmitClick');
+    this.props.dispatch(startImageUpload(this.props.image.file));
   }
 
 
