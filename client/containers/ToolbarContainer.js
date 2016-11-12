@@ -78,6 +78,7 @@ class ToolbarContainer extends Component {
   handleSubmitClick(e) {
     console.log('handleSubmitClick');
     this.props.dispatch(startImageUpload(this.props.image.file));
+    this.props.dispatch(imageCancel());
   }
 
 
