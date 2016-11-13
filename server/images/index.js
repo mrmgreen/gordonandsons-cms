@@ -11,5 +11,11 @@ module.exports = {
     console.log('image created');
     console.log('req.files ===', req.file);
     return res.send('created an image controller whoop whoop');
-  }
+  },
+
+  getAll: (req,res,next) => {
+    debugger;
+    console.log('do you hear me!');
+    res.send('hi');
+  },
 }

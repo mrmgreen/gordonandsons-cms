@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { textBold, textItalics, textUnderline, imageUpload, imageCancel, startImageUpload } from '../actions'
+import { textBold, textItalics, textUnderline, imageUpload, imageCancel, startImageUpload, loadImages } from '../actions'
 import styles from './toolbar.local.css'
 import Text from '../components/EditingArea/toolbar/text/text'
-import ImageUpload from '../components/EditingArea/toolbar/image/upload'
+import ImageUpload from '../components/EditingArea/toolbar/image/Upload'
+import ImageSelect from '../components/EditingArea/toolbar/image/Select'
 import { round } from 'lodash'
 
 class ToolbarContainer extends Component {
@@ -17,6 +18,8 @@ class ToolbarContainer extends Component {
     this.handleImageUploadChange = this.handleImageUploadChange.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    this.handleImageSelection = this.handleImageSelection.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   handleImageUploadChange(e) {
@@ -81,6 +84,14 @@ class ToolbarContainer extends Component {
     this.props.dispatch(imageCancel());
   }
 
+  handleImageSelection(e) {
+    console.info('handleImageSelection');
+  }
+
+  handleOnClick() {
+    this.props.dispatch(loadImages());
+  }
+
 
   render() {
     const increments = this.props.counter;
@@ -100,6 +111,12 @@ class ToolbarContainer extends Component {
           handleCancelClick={this.handleCancelClick}
           handleSubmitClick={this.handleSubmitClick}
           />
+        <ImageSelect
+            image={this.props.image}
+            handleCancelClick={this.handleCancelClick}
+            handleImageSelection={this.handleImageSelection}
+            handleOnClick={this.handleOnClick}
+            />
       </div>
     )
   }

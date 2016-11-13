@@ -20,6 +20,8 @@ app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, '../client' + '/index.html'));
 });
 
+app.get('/images', images.getAll);
+
 app.post('/image/create', upload.single('file'), images.upload)
 
 app.listen(port, (error) => {

@@ -35,7 +35,7 @@ export function imageCancel() {
 }
 
 export function startImageUpload(imageFile) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     const formData = new FormData();
     formData.append('file', imageFile, imageFile.name);
 
@@ -48,6 +48,19 @@ export function startImageUpload(imageFile) {
 
     return fetch(request).then((response) => {
       console.log('helloooooo request is good', response);
+    });
+  }
+}
+
+export function loadImages() {
+  return (dispatch) => {
+    console.log('action loadImages');
+    const options = {
+      method: 'GET',
+    }
+
+    return fetch('/images', options).then((response) => {
+      console.log('you have reached the promise land');
     });
   }
 }

@@ -5,9 +5,10 @@ import ImagePreviewFooter from './ImagePreviewFooter';
 import cx from "classnames";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-class Upload extends Component {
+class Select extends Component {
   constructor(props) {
     super(props);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.state = {
       active: false,
       imageKey: 1,
@@ -29,51 +30,51 @@ class Upload extends Component {
     }
   }
 
+  handleOnClick(e) {
+    this.setState({
+      active: true
+    });
+    this.props.handleOnClick();
+  }
+
   render() {
     let img = this.props.image.src ? <img src={this.props.image.src} className={ styles.img }></img> : null;
     let className = cx(
       this.state.active ? [styles.imagepreviewActive] : [styles.imagepreview],
     );
-    let imageUploadComp;
+    let imageSelectionComp;
     if (this.state.active) {
-      imageUploadComp = <div className={ className } key="upload">
+      imageSelectionComp = <div className={ className } key="upload">
           <ImgPreviewHeader handleCancelClick={ this.props.handleCancelClick } />
           <div className={ styles.imageContainer }>
             {img}
             Image size:
-            {this.props.image.size}
           </div>
-          <ImagePreviewFooter handleSubmitClick={ this.props.handleSubmitClick } />
+          <ImagePreviewFooter handleImageSelection={ this.props.handleImageSelection } />
         </div>
-    } else { imageUploadComp = null }
+    } else { imageSelectionComp = null }
 
     return (
       <div className={ styles['toolbarComponent'] }>
-        <h3>Upload image</h3>
-        <input
-          key={this.state.imageKey}
-          type="file"
-          name="file"
-          id="file"
-          onChange={this.props.handleImageUploadChange}
-         />
+        <h3>Select an image</h3>
+        <button onClick={this.handleOnClick}>Select image</button>
          <ReactCSSTransitionGroup
-           transitionName = "imagepreview"
+           transitionName = "imageSelection"
            transitionEnterTimeout={500} transitionLeaveTimeout={300}
            transitionEnter = {true} transitionLeave = {true}
           >
-          { imageUploadComp }
+          { imageSelectionComp }
          </ReactCSSTransitionGroup>
       </div>
     )
   }
 }
 
-Upload.propTypes = {
-  handleImageUploadChange: PropTypes.func,
+Select.propTypes = {
   image: PropTypes.object,
   handleCancelClick: PropTypes.func,
-  handleSubmitClick: PropTypes.func,
+  handleImageSelection: PropTypes.func,
+  handleOnClick: PropTypes.func,
 }
 
-export default Upload;
+export default Select;
