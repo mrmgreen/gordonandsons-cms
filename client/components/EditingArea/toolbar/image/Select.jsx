@@ -15,21 +15,6 @@ class Select extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    newProps.image.src !== this.props.image.src && newProps.image.src !== '' ?
-    this.setState({
-      active: true,
-    })
-    : this.setState({
-      active: false,
-    })
-    if (newProps.image.value !== this.props.image.value) {
-      this.setState({
-        imageKey: this.state.imageKey +=1,
-      });
-    }
-  }
-
   handleOnClick(e) {
     this.setState({
       active: true

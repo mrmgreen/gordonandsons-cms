@@ -9,8 +9,22 @@ const bodyParser = require('body-parser');
 const port = 3000;
 const images = require('./images');
 const multer = require('multer');
-const upload = multer({ dest: 'images/uploaded' });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images/uploaded')
+  },
+  filename: (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg') {
+      cb(null, `${file.fieldname}-${Date.now()}.jpg`)
+    } else if (file.mimetype === 'image/png') {
+      cb(null, `${file.fieldname}-${Date.now()}.png`)
+    } else {
+      console.error('please upload a jpg or png image file.');
+    }
+  }
+})
 
+const upload = multer({ storage: storage })
 const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
@@ -20,7 +34,7 @@ app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, '../client' + '/index.html'));
 });
 
-app.get('/images', images.getAll);
+app.get('/images', images.getAll)
 
 app.post('/image/create', upload.single('file'), images.upload)
 
