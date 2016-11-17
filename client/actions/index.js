@@ -61,7 +61,12 @@ export function loadImages() {
 
     return fetch('/images', options).then((response) => {
       console.log('you have reached the promise land');
-      console.log(response);
+      console.log(response.body);
+      response.json().then((body) => {
+        console.log('body ===', body);
+      })
+    }).catch((error) => {
+      console.error('oh dear loadimages failed because: ', error.message);
     });
   }
 }

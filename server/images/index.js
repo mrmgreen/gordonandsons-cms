@@ -20,8 +20,7 @@ module.exports = {
           images.push(file);
         }
       });
-      res.status(200);
-      return res.json(images);
+      return res.status(200).json(images);
     });
   },
 }
