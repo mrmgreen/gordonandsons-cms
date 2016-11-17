@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const uid = require('uid2');
 const mime = require('mime');
-const targetPath = path.resolve(__dirname + '/images/uploaded');
+const targetPath = path.normalize(__dirname + '/../../images/uploaded');
 const imageTypes = ['image/jpeg', 'image/png'];
 
 module.exports = {
@@ -12,8 +12,16 @@ module.exports = {
   },
 
   getAll: (req,res,next) => {
-    debugger;
-    console.log('do you hear me!');
-    res.send('hi');
+    let images = [];
+    fs.readdir(targetPath, (error, files) => {
+      const pattern = /jpg|jpeg|png/;
+      files.forEach((file) => {
+        if (pattern.test(file) === true) {
+          images.push(file);
+        }
+      });
+      res.status(200);
+      return res.json(images);
+    });
   },
 }

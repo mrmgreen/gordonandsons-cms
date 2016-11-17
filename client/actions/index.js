@@ -61,6 +61,7 @@ export function loadImages() {
 
     return fetch('/images', options).then((response) => {
       console.log('you have reached the promise land');
+      console.log(response);
     });
   }
 }

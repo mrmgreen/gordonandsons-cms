@@ -29,6 +29,7 @@ const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/images/uploaded'));
 
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, '../client' + '/index.html'));
