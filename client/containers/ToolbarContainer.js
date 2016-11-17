@@ -112,7 +112,7 @@ class ToolbarContainer extends Component {
           handleSubmitClick={this.handleSubmitClick}
           />
         <ImageSelect
-            image={this.props.image}
+            imagesSelect={this.props.imagesSelect}
             handleCancelClick={this.handleCancelClick}
             handleImageSelection={this.handleImageSelection}
             handleOnClick={this.handleOnClick}
@@ -126,12 +126,14 @@ ToolbarContainer.propTypes = {
   dispatch: React.PropTypes.func,
   text: React.PropTypes.object,
   image: React.PropTypes.object,
+  imagesSelect: React.PropTypes.object,
 }
 
 function mapStateToProps(state) {
   return {
     text: state.text,
     image: state.image,
+    imagesSelect: state.imagesSelect,
   }
 }
 

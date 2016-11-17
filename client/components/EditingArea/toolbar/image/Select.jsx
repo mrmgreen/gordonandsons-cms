@@ -5,6 +5,8 @@ import ImagePreviewFooter from './ImagePreviewFooter';
 import cx from "classnames";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+const imagePath = '/images/uploaded';
+
 class Select extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,8 @@ class Select extends Component {
   }
 
   render() {
-    let img = this.props.image.src ? <img src={this.props.image.src} className={ styles.img }></img> : null;
+
+    let img = this.props.imagesSelect.images.length ? <img src={imagePath + this.props.imagesSelect.images[0]} className={ styles.img }></img> : null;
     let className = cx(
       this.state.active ? [styles.imagepreviewActive] : [styles.imagepreview],
     );
@@ -56,7 +59,7 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-  image: PropTypes.object,
+  imagesSelect: PropTypes.object,
   handleCancelClick: PropTypes.func,
   handleImageSelection: PropTypes.func,
   handleOnClick: PropTypes.func,

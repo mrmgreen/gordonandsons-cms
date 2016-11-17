@@ -52,6 +52,13 @@ export function startImageUpload(imageFile) {
   }
 }
 
+function setImages(images) {
+  return {
+    type: 'IMAGESFORPREVIEW',
+    images,
+  }
+}
+
 export function loadImages() {
   return (dispatch) => {
     console.log('action loadImages');
@@ -59,11 +66,9 @@ export function loadImages() {
       method: 'GET',
     }
 
-    return fetch('/images', options).then((response) => {
-      console.log('you have reached the promise land');
-      console.log(response.body);
+    fetch('/images', options).then((response) => {
       response.json().then((body) => {
-        console.log('body ===', body);
+        dispatch(setImages(body));
       })
     }).catch((error) => {
       console.error('oh dear loadimages failed because: ', error.message);
