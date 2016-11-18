@@ -5,7 +5,7 @@ import ImagePreviewFooter from './ImagePreviewFooter';
 import cx from "classnames";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const imagePath = '/images/uploaded';
+const imagePath = '/images/';
 
 class Select extends Component {
   constructor(props) {
